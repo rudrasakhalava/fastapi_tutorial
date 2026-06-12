@@ -301,3 +301,13 @@ def delete_data(p_id : str):
     if deleted :
         return {"Message" : "Data Deleted Successfully"}
     return {"Message" : "Data not Deleted Successfully"}
+
+@app.get("/view/{pid}")
+def show_data(pid : str):
+    data = load_data()
+
+    for p in data:
+        if p["patient_id"] == pid:
+            return p
+        
+    return {"Error" : "User not found"}
