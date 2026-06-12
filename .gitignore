@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Don't ignore this file
+!.gitignore
+
+# Upload only these files
+!main1.py
+!patients.json
+!requirements.txt
