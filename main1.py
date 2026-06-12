@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path, HTTPException
 import json
 
 app = FastAPI()
@@ -243,7 +243,7 @@ def update_value(
     if updated:
         return {"message": "Patient updated successfully"}
 
-    return {"message": "Patient not found"}
+    raise HTTPException(status_code=404,detail="User not found!!!")
 
 @app.post("/add")
 def add_value(
@@ -292,7 +292,7 @@ def add_value(
     if add:
         return {"message": "Patient added successfully"}
 
-    return {"message": "Patient not added successfully"}
+    raise HTTPException(status_code=404,detail="User not found!!!")
 
 @app.delete("/delete")
 def delete_data(p_id : str):
@@ -300,14 +300,14 @@ def delete_data(p_id : str):
 
     if deleted :
         return {"Message" : "Data Deleted Successfully"}
-    return {"Message" : "Data not Deleted Successfully"}
+    raise HTTPException(status_code=404,detail="User not found!!!")
 
 @app.get("/view/{pid}")
-def show_data(pid : str):
+def show_data(pid : str = Path(..., description="ID of the patient in the DB", example="P001")):
     data = load_data()
 
     for p in data:
         if p["patient_id"] == pid:
             return p
         
-    return {"Error" : "User not found"}
+    raise HTTPException(status_code=404,detail="User not found!!!")
