@@ -1,10 +1,9 @@
 from fastapi import FastAPI, Path, HTTPException, Query
 import json
-
-app = FastAPI()
-
 from pydantic import BaseModel
 from typing import Optional
+
+app = FastAPI()
 
 class PatientBase(BaseModel):
     first_name: Optional[str] = None

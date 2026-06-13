@@ -6,6 +6,7 @@
 !.gitignore
 
 # Upload only these files
+!1_pydantic_basics.py
 !main1.py
 !patients.json
 !requirements.txt
