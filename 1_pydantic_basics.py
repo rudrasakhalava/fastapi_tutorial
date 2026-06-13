@@ -81,3 +81,13 @@ patient_info = {"name" : "Rudra", "linkedIn_url" : "https://linkedin.com", "emai
 patient1 = Patient(**patient_info)
 
 patient_data(patient1)
+
+# serialization
+
+temp = patient1.model_dump(include=["name"]) # dump in python dictionary
+print(temp)
+print(type(temp))
+
+temp = patient1.model_dump_json(exclude={"address":["house_no","area"]}) # dump in json (initially string then json)
+print(temp)
+print(type(temp))
