@@ -1,6 +1,13 @@
 from pydantic import BaseModel, EmailStr, AnyUrl, Field, field_validator, model_validator, computed_field
 from typing import List, Dict, Optional
 
+class Address(BaseModel):
+    house_no : int
+    area : str
+    city : str
+    state : str
+    pincode : str
+
 class Patient(BaseModel):
     name : str = Field(
         title="Patient's Name",
@@ -16,6 +23,7 @@ class Patient(BaseModel):
     married : bool = False                  # set default value = "False" 
     allergies : Optional[List[str]] = None  # make feild oprtional and also set default value = "None"
     contact_detail : Dict[str,str]
+    address : Address
 
     @field_validator("email")
     @classmethod
@@ -56,8 +64,19 @@ def patient_data(patient : Patient):
     print(patient.allergies)
     print(patient.contact_detail)
     print("BMI : ",patient.calculate_bmi)
+    print("Full Address : ",patient.address)
+    print("House Number : ",patient.address.house_no)
+    print("Pincode : ",patient.address.pincode)
 
-patient_info = {"name" : "Rudra", "linkedIn_url" : "https://linkedin.com", "email" : "abc@icici.com", "age" : 20, "weight" : 65.5, "height" : 1.65, "married" : False, "allergies":["pollen","dust"], "contact_detail" : {"mobile":"7584263594"}}
+address_info = {"house_no" : 158,
+    "area" : "Vesu",
+    "city" : "Surat",
+    "state" : "Gujarat",
+    "pincode" : "357443"}
+
+add1 = Address(**address_info)
+
+patient_info = {"name" : "Rudra", "linkedIn_url" : "https://linkedin.com", "email" : "abc@icici.com", "age" : 20, "weight" : 65.5, "height" : 1.65, "married" : False, "allergies":["pollen","dust"], "contact_detail" : {"mobile":"7584263594"}, "address" : add1}
 
 patient1 = Patient(**patient_info)
 
