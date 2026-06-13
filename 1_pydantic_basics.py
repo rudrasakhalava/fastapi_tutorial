@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, AnyUrl, Field, field_validator
+from pydantic import BaseModel, EmailStr, AnyUrl, Field, field_validator, model_validator
 from typing import List, Dict, Optional
 
 class Patient(BaseModel):
@@ -31,6 +31,12 @@ class Patient(BaseModel):
     @classmethod
     def name_validator(cls, value):
         return value.lower()
+    
+    @model_validator(mode = "after")
+    def validate_emergency_contect(cls, model):
+        if model.age > 60 and "mobile" not in model.contact_detail :
+            raise ValueError("Patients older than 60 must have an emergency contact number")
+        return model
 
 def patient_data(patient : Patient):
     print(patient.name)
