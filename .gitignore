@@ -6,6 +6,8 @@
 !.gitignore
 
 # Upload only these files
+!1_student_ms.py
+!1_student.json
 !1_pydantic_basics.py
 !main1.py
 !patients.json

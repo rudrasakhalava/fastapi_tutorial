@@ -1,0 +1,47 @@
+[
+    {
+        "student_id": "S001",
+        "name": "Rahul Sharma",
+        "age": 18,
+        "marks": 92.5,
+        "attendance": 95.0,
+        "gender": "Male",
+        "grade": "A+"
+    },
+    {
+        "student_id": "S002",
+        "name": "Priya Patel",
+        "age": 20,
+        "marks": 85.0,
+        "attendance": 91.5,
+        "gender": "Female",
+        "grade": "A"
+    },
+    {
+        "student_id": "S003",
+        "name": "Amit Verma",
+        "age": 19,
+        "marks": 73.5,
+        "attendance": 87.0,
+        "gender": "Male",
+        "grade": "B"
+    },
+    {
+        "student_id": "S004",
+        "name": "Neha Singh",
+        "age": 21,
+        "marks": 58.0,
+        "attendance": 78.5,
+        "gender": "Female",
+        "grade": "D"
+    },
+    {
+        "student_id": "S005",
+        "name": "Karan Mehta",
+        "age": 17,
+        "marks": 34.5,
+        "attendance": 69.0,
+        "gender": "Male",
+        "grade": "F"
+    }
+]
