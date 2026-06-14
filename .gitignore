@@ -5,6 +5,9 @@
 # Don't ignore this file
 !.gitignore
 
+!fastapi_with_ml_model/
+!fastapi_with_ml_model/**
+
 # Upload only these files
 !1_student_ms.py
 !1_student.json
